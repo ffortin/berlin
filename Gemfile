@@ -1,3 +1,1 @@
-source "http://www.rubygems.org"
- 
-gemspec
+gem 'berlin-ai'

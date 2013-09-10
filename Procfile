@@ -1,1 +1,1 @@
-ruby test.rb
+bundle exec shotgun test.rb -a 0.0.0.0

@@ -24,8 +24,8 @@ class Berlin::AI::Player
       soldiers_to_send = soldiers - soldiers_to_keep
 
       winner_node = nil
-      puts "Soldiers to send: " + soldiers_to_send
-      puts "Number of soliders :" + soldiers
+      puts "Soldiers to send: %d" % soldiers_to_send
+      puts "Number of soliders %d " % soldiers
 
       if soldiers_to_send > 0       
         node.adjacent_nodes.shuffle.each do |other_node|

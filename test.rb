@@ -27,7 +27,6 @@ class Berlin::AI::Player
         node.adjacent_nodes.shuffle.each do |other_node|
           winner_node = better_node(other_node, winner_node)
         end
-        puts "We have a WINNER NODE %p" % winner_node.type
         game.add_move(node, winner_node, soldiers_to_send)
       end
 

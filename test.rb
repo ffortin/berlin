@@ -30,7 +30,7 @@ class Berlin::AI::Player
           winner_node = better_node(other_node, winner_node)
         end
         puts "We have a WINNER NODE %p" % winner_node.type
-        game.add_move(node, winner_node, soldiers_to_send)
+        game.add_move(node, other_node, soldiers_to_send)
       end
 
     end

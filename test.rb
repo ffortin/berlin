@@ -5,8 +5,8 @@ def compute_score(node)
 end
 
 def better_node(node1, node2)
-  return node1 if node2.nil?
-  return node2 if node1.nil?
+  return node1 if node2.nil? || node2.owned?
+  return node2 if node1.nil? || node1.owned?
   compute_score(node1) > compute_score(node2) ? node1 : node2
 end
 
@@ -26,7 +26,6 @@ class Berlin::AI::Player
       if soldiers_to_send > 0
         node.adjacent_nodes.shuffle.each do |other_node|
           winner_node = better_node(other_node, winner_node)
-          #winner_node = other_node
         end
         puts "We have a WINNER NODE %p" % winner_node.type
         game.add_move(node, winner_node, soldiers_to_send)

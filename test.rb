@@ -17,13 +17,15 @@ class Berlin::AI::Player
 
     # Here's an AI that randomly moves soldiers from node to node.
     game.map.controlled_nodes.each do |node|
-      points_per_turn = node.points
+
       soldiers = node.available_soldiers
-      soldiers_per_turn = node.soldiers_per_turn
-      soldiers_to_keep = (points_per_turn > 0 && soldiers_per_turn > 0) ? (soldiers / 2.0).ceil : 0;
+
+      soldiers_to_keep = compute_score(node) > 0 ? (soldiers / 2.0).ceil : 0;
       soldiers_to_send = soldiers - soldiers_to_keep
 
       winner_node = nil
+      puts "Soliders to send: " + soliders_to_send
+      
 
       if soldiers_to_send > 0       
         node.adjacent_nodes.shuffle.each do |other_node|

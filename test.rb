@@ -7,9 +7,9 @@ class Berlin::AI::Player
   end
 
   def self.better_node(node1, node2)
-      return node1 if node2 == nil
-      return node2 if node1 == nil
-      compute_score(node1) > compute_score(node2) ? node1 : node2
+    return node1 if node2 == nil
+    return node2 if node1 == nil
+    compute_score(node1) > compute_score(node2) ? node1 : node2
   end
 
   def self.on_turn(game)         # Implement the on_turn method of Berlin::AI::Player.
@@ -24,16 +24,15 @@ class Berlin::AI::Player
       soldiers_to_send = soldiers - soldiers_to_keep
 
       winner_node = nil
-      puts "Soldiers to send: %d" % soldiers_to_send
-      puts "Number of soliders %d " % soldiers
-
-      if soldiers_to_send > 0       
-        node.adjacent_nodes.shuffle.each do |other_node|
-          winner_node = better_node(other_node, winner_node)          
-      end
-      game.add_move(node, winner_node, soldiers_to_send)
-      end
       
+      if soldiers_to_send > 0
+        node.adjacent_nodes.shuffle.each do |other_node|
+          winner_node = better_node(other_node, winner_node)
+        end
+        puts "Winner node %p" % winner_node
+        game.add_move(node, winner_node, soldiers_to_send)
+      end
+
     end
   end
 end
